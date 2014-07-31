@@ -1,0 +1,22 @@
+{
+  "name": "student-opinion-transportation",
+  "version": "0.0.0",
+  "description": "A quick survey gathering student opinion on using mobile apps as an alternative to boarding the GRT ",
+  "main": "web.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "survey"
+  ],
+  "author": "amanda chan",
+  "license": "Attribution-NonCommercial 4.0 International",
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:student-opinion-transportation.git "
+  },
+  "dependencies": {
+    "express": "^4.7.2",
+    "logfmt": "^1.1.2"
+  }
+}
