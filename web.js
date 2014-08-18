@@ -3,13 +3,13 @@ var logfmt = require("logfmt");
 var path = require("path");
 var app = express();
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/public/views/');
 app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-    res.render("index.html");
+    res.render("test.html");
 });
 
 var port = Number(process.env.PORT || 5000);
