@@ -14,6 +14,17 @@
 <br/><br/><br/>
 
 1. What phone do you have?
-<div ng-controller="StudyController">{{hello}}</div>
+
+<div ng-controller="StudyController">
+    {{hello}} 
+</div>
+
+<div ng-controller="Main">
+    <div when-scrolled="loadMore()">
+        <ul>
+            <li ng-repeat="i in items">{{i.id}}</li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

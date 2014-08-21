@@ -2,3 +2,12 @@ body {
     background-color: #F3F3FC;
     font-family: 'Open Sans', sans-serif;
 }
+
+li {
+  width: 200px;
+        display: inline-block;
+}
+div {
+    overflow: auto;
+       white-space: nowrap;
+}
