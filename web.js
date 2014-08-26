@@ -24,18 +24,28 @@ app.get('/listOfAllPhones.txt' , function(req , res){
 		res.end(data); 
 	}); 
 });
-var filePath2 = path.join(__dirname, 'public/views/phoneImages/phoneImages.txt');
-app.get('/phoneImages.txt' , function(req , res){ 
+var filePath2 = path.join(__dirname, 'public/views/phoneImages2.txt');
+app.get('/phoneImages2.txt' , function(req , res){ 
 	res.setHeader('Content-type' , 'text/plain'); 
 	fs.readFile(filePath2, function(err , data){ 
 		res.end(data); 
 	}); 
 });
 
+app.get('/phoneImages', function(req, res) {
+	res.send('200');
+});
+
 app.get('/phoneImages/:file', function(req, res){
 	var file = req.params.file;
-	var filePath3 = path.join(__dirname, 'public/views/phoneImages/'+file);
-	res.sendfile(filePath3);
+	console.log(file);
+	if(file && file !== undefined) {
+		var filePath3 = path.join(__dirname, 'public/views/phoneImages/'+file);
+		if (fs.existsSync(filePath3)) {
+			res.sendfile(filePath3);
+		}
+	}
+	else fs.send('no file exists');
 })
 
 var port = Number(process.env.PORT || 5000);

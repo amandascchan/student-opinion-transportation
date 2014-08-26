@@ -4,11 +4,10 @@
 <meta charset="utf-8">
 <meta name="description" content="student transportation questionairre">
 <link rel="stylesheet" type="text/css" href="../css/main.css" />
-<script src="../../lib/angular.min.js"></script>
+<script src="../../lib/angular/angular.min.js"></script>
 <script src="../../lib/angular-underscore-module/angular-underscore-module.js"></script>
 <script src="../../lib/underscore/underscore.js"></script>
 <script type="text/javascript" src="../../controllers/study.client.controller.js"> </script> 
-<img src="../iPhone_3G.jpg"></img>
 </head>
 
 <body>
@@ -21,21 +20,15 @@
 <div ng-controller="StudyController">
     {{hello}} 
 </div>
-
-<div ng-controller="Main">
-    <div when-scrolled="loadMore()">
-        <ul>
-            <li ng-repeat="i in items">{{i.id}}</li>
-        </ul>
-    </div>
-</div>
-<div ng-controller="UserCtrl">
+<div ng-controller="UserCtrl" ng-init="init()">
 	<div class="HorizontalScroll">
 		<ul>
-			<li ng-repeat="phone in imageText">
-				{{phone}}
-				<!--<img ng-src="{{phone}}"></img>-->
-				<img src="../phoneImages/{{phone}}"></img>
+			<li ng-repeat="phone in imageText track by $index">
+				<img ng-src="../phoneImages/{{phone.image}}" onerror="this.style.display='none'"/>
+				<br/>
+				{{phone.name}}
+				<br/>
+				{{phone.image}}
 			</li>
 		</ul>
 	</div>

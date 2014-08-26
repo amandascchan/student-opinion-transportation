@@ -1,5 +1,4 @@
 Alcatel One Touch M'POP
-Alcatel Onetouch A392A
 Alcatel Onetouch Idol 2S
 Alcatel Onetouch Idol Mini 
 Alcatel Onetouch Idol X
@@ -22,8 +21,8 @@ Blackberry Curve 9700
 Blackberry Curve 9780
 Blackberry Storm 9500
 Blackberry Storm 9530
-Blackberry Storm2 9520
-Blackberry Storm2 9550
+Blackberry Storm 2 9520
+Blackberry Storm 2 9550
 Blackberry Style 9670
 Blackberry Torch 9800
 Blackberry Torch 9810
@@ -32,7 +31,6 @@ Blackberry Torch 9860
 Blackberry Tour 9630
 Blackberry 8820
 Blackberry 8830
-Blackberry 88XX 8800
 Blackberry 9930
 Blackberry Bold Touch 9900
 Blackberry Curve 9320
@@ -94,8 +92,7 @@ Windows Phone 8S by HTC
 ZTE MF271
 ZTE Z222
 iPhone 2G
-iPhone 3G
-iPhone 3Gs
+iPhone_3G/3Gs
 iPhone 4
 iPhone 4S
 iPhone 5
