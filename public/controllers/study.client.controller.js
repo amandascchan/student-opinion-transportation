@@ -6,6 +6,7 @@ myApp.controller('StudyController', ['$scope', function($scope) {
     $scope.hello = 'helleeeee';
 
 }]);
+
 myApp.service('initialization', function($http) {
     this.getPhoneText = $http.get('/listOfAllPhones.txt').success(function(data, status) {
         if (data && status === 200) return data
@@ -16,11 +17,11 @@ myApp.service('initialization', function($http) {
     });
     return this;
 });
-
 function UserCtrl($scope, $http, initialization) {
     $scope.phoneText = [];
     $scope.phoneImages = [];
     $scope.imageText = {};
+    $scope.revisedText = [];
     
     $scope.init = function() {
         initialization.getPhoneText.then(function(data){
@@ -37,13 +38,12 @@ function UserCtrl($scope, $http, initialization) {
                 var phoneStr = $scope.phoneImages[i];
                 phoneStr = phoneStr.substring(0, phoneStr.length - 4);
                 phoneStr = phoneStr.replace(/_/g, ' ');
-                console.log(phoneStr);
                 if(_.indexOf($scope.phoneText, phoneStr) === -1) {
                     $scope.phoneImages.splice(i, 1);
-                    console.log('hi');
-                    console.log(i);
+                    $scope.phoneText.splice(i, 1);
                 }
                 else {
+                    $scope.revisedText.push(phoneStr);
                     $scope.imageText[phoneStr] = {};
                     $scope.imageText[phoneStr].name = phoneStr;
                     $scope.imageText[phoneStr].carrier = 'lol';
@@ -57,13 +57,13 @@ function UserCtrl($scope, $http, initialization) {
         $scope.selectedItem = phone.name;
         _.forEach($scope.imageText, function(remainPhone) {
             if(remainPhone.name !== $scope.selectedItem && document.getElementById(remainPhone.name) !== null) {
-                document.getElementById(remainPhone.name).style.background = "#F3F3FC";
+                document.getElementById(remainPhone.name).style.background = "#FFF3ED";
                 remainPhone.selected = false;
             }
         });
         var color;
         if(phone.selected) {
-            color = "#F3F3FC";
+            color = "#FFF3ED";
             $scope.selectedItem = undefined;
         }
         else color = "blue";

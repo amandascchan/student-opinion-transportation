@@ -1,7 +1,22 @@
 body {
-    background-color: #F3F3FC;
+    background-color: #FFF3ED;
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5C2129; 
 }
+p {
+	text-align: left;
+}
+div.header {
+	height: 90px;
+	background-color: #9C2123;
+	font-size: 27px;
+	color: #EBBCBC;
+	width: 800px;
+}
+
 
 li {
 	width: 300px;
@@ -36,4 +51,12 @@ img {
     max-height:200px;
     width: auto;
     height: auto;
+}
+#textBox {
+	border-radius: 0px; 
+	-moz-border-radius: 0px; 
+	-webkit-border-radius: 0px; 
+	border: 1px dashed #9C2123;
+	height: 30px;
+	width: 400px;
 }

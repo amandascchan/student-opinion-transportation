@@ -12,32 +12,36 @@
 </head>
 
 <body>
-    <p> Student interest on using mobile devices to board GRT buses </p>
-        <p> The purpose of this questionaire is to gather general student interest in incorporating a mobile component to their GRT experiences. FED's is considering implementing a mobile application that will allow students with smartphones to board the GRT using their smartphones instead of their watcards. <i>This mobile app is meant as an ALTERNATIVE to using watcards, not a replacement.</i> </p>
+    <div class="header"> Student interest on using mobile devices to board GRT buses </div>
+         <p> The purpose of this questionaire is to gather general student interest in incorporating a mobile component to their GRT experiences. FED's is considering implementing a mobile application that will allow students with smartphones to board the GRT using their smartphones instead of their watcards. <i>This mobile app is meant as an ALTERNATIVE to using watcards, not a replacement.</i> </p>
+    
 <br/><br/><br/>
 
-1. What phone do you have?
-
-<div ng-controller="StudyController">
-    {{hello}} 
-</div>
+1. Which phone do you have?
 <div ng-controller="UserCtrl" ng-init="init()">
-	<input type="search" ng-model="search" placeholder="Search...">
+	<input type="search" id="textBox" ng-model="selectedItem " placeholder="Search...">
 	<div class="HorizontalScroll">
 		<ul>
-			<li ng-repeat="phone in imageText track by $index | filter:search" ng-show="$index > 0">
-				<div id="{{phone.name}}" ng-click="whenClicked(phone)">
+			<li ng-repeat="phone in revisedText | filter:selectedItem track by $index">
+				<div id="{{phone}}" ng-click="whenClicked(imageText[phone])">
 					<div id="picture">
-						{{$index}}
-						<img ng-src="../phoneImages/{{phone.image}}" onerror="this.style.display='none'"/>
+						<img ng-src="../phoneImages/{{imageText[phone].image}}" onerror="this.style.display='none'"/>
 						<br/>
-						{{phone.name}}
+						{{phone}}
 					</div>
 				</div>
 			</li>
 		</ul>
 	</div>
 </div>
+2. What term are you in? <!--lighter color-->eg. 3A <br/>
+<input id="textBox" type="text" ng-model="term" placeholder="">
+<br/>
+3. How often do you use the bus?
+<br/>
+<!--slider here-->
+4. Would you use a mobile app that lets you ride the GRT, like your watcard currently does? 
+<!--checkbox-->
 
 </body>
 </html>
