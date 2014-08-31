@@ -8,6 +8,7 @@
 <script src="../../lib/angular-underscore-module/angular-underscore-module.js"></script>
 <script src="../../lib/underscore/underscore.js"></script>
 <script type="text/javascript" src="../../controllers/study.client.controller.js"> </script> 
+
 </head>
 
 <body>
@@ -21,14 +22,18 @@
     {{hello}} 
 </div>
 <div ng-controller="UserCtrl" ng-init="init()">
+	<input type="search" ng-model="search" placeholder="Search...">
 	<div class="HorizontalScroll">
 		<ul>
-			<li ng-repeat="phone in imageText track by $index">
-				<img ng-src="../phoneImages/{{phone.image}}" onerror="this.style.display='none'"/>
-				<br/>
-				{{phone.name}}
-				<br/>
-				{{phone.image}}
+			<li ng-repeat="phone in imageText track by $index | filter:search" ng-show="$index > 0">
+				<div id="{{phone.name}}" ng-click="whenClicked(phone)">
+					<div id="picture">
+						{{$index}}
+						<img ng-src="../phoneImages/{{phone.image}}" onerror="this.style.display='none'"/>
+						<br/>
+						{{phone.name}}
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>

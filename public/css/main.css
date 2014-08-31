@@ -17,12 +17,19 @@ div.horizontalScroll {
 	background-color: #00FFFF;
     width: 100px;
     height: 100px;
-    border: 13px solid #bed5cd;
+    border: 13px solid black;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 }
 
+div.selectItemAfter {
+	background-color: yellow;
+
+}
+div.selectItem {
+	background-color: #F3F3FC;
+}
 
 img {
 	max-width:200px;

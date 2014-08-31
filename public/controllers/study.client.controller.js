@@ -6,22 +6,29 @@ myApp.controller('StudyController', ['$scope', function($scope) {
     $scope.hello = 'helleeeee';
 
 }]);
+myApp.service('initialization', function($http) {
+    this.getPhoneText = $http.get('/listOfAllPhones.txt').success(function(data, status) {
+        if (data && status === 200) return data
+    });
+    
+    this.getPhoneImages = $http.get('/phoneImages2.txt').success(function(data, status) {
+        if(data && status == 200) return data 
+    });
+    return this;
+});
 
-function UserCtrl($scope, $http) {
+function UserCtrl($scope, $http, initialization) {
     $scope.phoneText = [];
     $scope.phoneImages = [];
     $scope.imageText = {};
+    
     $scope.init = function() {
-        $http.get('/listOfAllPhones.txt').success(function(data, status, headers, config) {
-            if (data && status === 200) {
-                $scope.phoneText = data.split('\n');
-            }
+        initialization.getPhoneText.then(function(data){
+            $scope.phoneText = data.data.split('\n');
         });
-        $http.get('/phoneImages2.txt').success(function(data, status, headers, config) {
-            if(data && status == 200) {
-                $scope.phoneImages = data.split('\n');
-                $scope.updatePhoneValues();
-            }
+        initialization.getPhoneImages.then(function(data){
+            $scope.phoneImages = data.data.split('\n');
+            $scope.updatePhoneValues();    
         });
     }
     $scope.updatePhoneValues = function () {
@@ -33,16 +40,34 @@ function UserCtrl($scope, $http) {
                 console.log(phoneStr);
                 if(_.indexOf($scope.phoneText, phoneStr) === -1) {
                     $scope.phoneImages.splice(i, 1);
+                    console.log('hi');
+                    console.log(i);
                 }
                 else {
-                    $scope.imageText[i] = {};
-                    $scope.imageText[i].name = phoneStr;
-                    $scope.imageText[i].carrier = 'lol';
-                     $scope.imageText[i].image = $scope.phoneImages[i];
-                    console.log($scope.imageText[i]);
+                    $scope.imageText[phoneStr] = {};
+                    $scope.imageText[phoneStr].name = phoneStr;
+                    $scope.imageText[phoneStr].carrier = 'lol';
+                    $scope.imageText[phoneStr].image = $scope.phoneImages[i];
+                    $scope.imageText[phoneStr].selected = false;
                 }
             }
         }
     }
-
+    $scope.whenClicked = function (phone) {
+        $scope.selectedItem = phone.name;
+        _.forEach($scope.imageText, function(remainPhone) {
+            if(remainPhone.name !== $scope.selectedItem && document.getElementById(remainPhone.name) !== null) {
+                document.getElementById(remainPhone.name).style.background = "#F3F3FC";
+                remainPhone.selected = false;
+            }
+        });
+        var color;
+        if(phone.selected) {
+            color = "#F3F3FC";
+            $scope.selectedItem = undefined;
+        }
+        else color = "blue";
+        $scope.imageText[phone.name].selected = !$scope.imageText[phone.name].selected;
+        document.getElementById(phone.name).style.background = color;
+    }
 };
