@@ -14,13 +14,12 @@ myApp.service('initialization', function($http) {
 });
 
 function StudyController($scope, $http, initialization){
-    $scope.sliderValue = 2;
+    $scope.question3 = 2;
     $scope.phoneText = [];
     $scope.phoneImages = [];
     $scope.imageText = {};
     $scope.revisedText = [];
     $scope.checkBox = {};
-    $scope.checkBox.yes = true;
     $scope.sliderOptions = ['never', 'once or twice a term', 'once or twice a week','everyday'];
     $scope.calculateValue = function(value) {
         var finalValue = Math.round(value);
@@ -59,14 +58,22 @@ function StudyController($scope, $http, initialization){
     $scope.whenClicked = function (phone) {
         $scope.selectedItem = phone.name;
         _.forEach($scope.imageText, function(remainPhone) {
-            if(remainPhone.name !== $scope.selectedItem && document.getElementById(remainPhone.name) !== null) {
-                remainPhone.selected = false;
-            }
+            if(remainPhone.name !== $scope.selectedItem && document.getElementById(remainPhone.name) !== null) remainPhone.selected = false;
         });
-        if(phone.selected) {
-            $scope.selectedItem = undefined;
-        }
+        if(phone.selected) $scope.selectedItem = undefined;
         $scope.imageText[phone.name].selected = !$scope.imageText[phone.name].selected;
+        $scope.question1 = $scope.selectedItem;
+    }
+
+    $scope.submit = function () {
+        console.log('1')
+        console.log($scope.question1);
+        console.log('2')
+        console.log($scope.question2);
+        console.log('3')
+        console.log($scope.question3);
+        console.log('4')
+        console.log($scope.question4);
     }
 
 }
