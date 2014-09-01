@@ -1,5 +1,5 @@
 body {
-    background-color: #FFF3ED;
+    background-color: #FFF8F5;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     margin-left: auto;
@@ -16,8 +16,6 @@ div.header {
 	color: #EBBCBC;
 	width: 800px;
 }
-
-
 li {
 	width: 300px;
     display: inline-block;
@@ -27,7 +25,14 @@ div {
 	overflow: auto;
 	white-space: nowrap;
 }
-
+div.noScroll {
+	overflow: visible;
+	white-space: nowrap;
+}
+li.noScroll {
+	display: inline-block;
+	height: 10px;
+}
 div.horizontalScroll {
 	background-color: #00FFFF;
     width: 100px;
@@ -37,7 +42,6 @@ div.horizontalScroll {
     overflow-y: hidden;
     white-space: nowrap;
 }
-
 div.selectItemAfter {
 	background-color: yellow;
 
@@ -45,7 +49,6 @@ div.selectItemAfter {
 div.selectItem {
 	background-color: #F3F3FC;
 }
-
 img {
 	max-width:200px;
     max-height:200px;
@@ -59,4 +62,12 @@ img {
 	border: 1px dashed #9C2123;
 	height: 30px;
 	width: 400px;
+}
+
+#restrictedWidth {
+	width: 400px;
+}
+
+#bold {
+	font-weight: bold;
 }

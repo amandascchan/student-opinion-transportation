@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Study">
+<html lang="en" ng-app="Study" ng-controller="StudyController">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="student transportation questionairre">
@@ -7,10 +7,10 @@
 <script src="../../lib/angular/angular.min.js"></script>
 <script src="../../lib/angular-underscore-module/angular-underscore-module.js"></script>
 <script src="../../lib/underscore/underscore.js"></script>
+<script src="../../lib/angular-slider/slider.js"></script>
+<link rel="stylesheet" type="text/css" href="../../lib/angular-slider/slider.css"/>
 <script type="text/javascript" src="../../controllers/study.client.controller.js"> </script> 
-
 </head>
-
 <body>
     <div class="header"> Student interest on using mobile devices to board GRT buses </div>
          <p> The purpose of this questionaire is to gather general student interest in incorporating a mobile component to their GRT experiences. FED's is considering implementing a mobile application that will allow students with smartphones to board the GRT using their smartphones instead of their watcards. <i>This mobile app is meant as an ALTERNATIVE to using watcards, not a replacement.</i> </p>
@@ -18,7 +18,7 @@
 <br/><br/><br/>
 
 1. Which phone do you have?
-<div ng-controller="UserCtrl" ng-init="init()">
+<div ng-init="init()">
 	<input type="search" id="textBox" ng-model="selectedItem " placeholder="Search...">
 	<div class="HorizontalScroll">
 		<ul>
@@ -34,14 +34,34 @@
 		</ul>
 	</div>
 </div>
-2. What term are you in? <!--lighter color-->eg. 3A <br/>
+2. Which term are you in? <!--lighter color-->eg. 3A <br/><br/>
 <input id="textBox" type="text" ng-model="term" placeholder="">
+<br/>
 <br/>
 3. How often do you use the bus?
 <br/>
+<br/>
 <!--slider here-->
-4. Would you use a mobile app that lets you ride the GRT, like your watcard currently does? 
-<!--checkbox-->
+<div class="noScroll">
+	<ul>
+		<li class="noScroll" ng-repeat="option in sliderOptions">
+			<div ng-if="sliderOptions[calculateValue(sliderValue)] === option">
+				<div id="bold">{{option}}</div>
+			</div>
+			<div ng-if="sliderOptions[calculateValue(sliderValue)] !== option">{{option}}</div>
+		</li>
+	</ul>
+	<slider id="restrictedWidth" floor="0" ceiling="3" step="0.01" precision="1" ng-model="sliderValue" translate="calculateValue"></slider>
+</div>
 
+4. Would you use a mobile app that lets you ride the GRT, like your watcard currently does? (Assuming a safe procedure, and that none of your data will be stolen)
+<!--checkbox--><br/>
+<input type="radio" ng-model="checkBox.yes" name="checkBox">yes<br/>
+<input type="radio" ng-model="checkBox.no" name="checkBox">no
+<div ng-show="checkBox.no"> <br/>
+	<input id="textBox" type="text" ng-model="explanation" placeholder="Please explain">
+</div>
+<br/>
+<input id="restrictedWidth" type="submit" value="Submit"> 
 </body>
 </html>

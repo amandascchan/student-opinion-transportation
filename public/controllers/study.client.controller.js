@@ -1,11 +1,6 @@
 'use strict';
 
-var myApp = angular.module('Study', ['underscore']);
-
-myApp.controller('StudyController', ['$scope', function($scope) {
-    $scope.hello = 'helleeeee';
-
-}]);
+var myApp = angular.module('Study', ['underscore', 'ui.slider']);
 
 myApp.service('initialization', function($http) {
     this.getPhoneText = $http.get('/listOfAllPhones.txt').success(function(data, status) {
@@ -17,12 +12,20 @@ myApp.service('initialization', function($http) {
     });
     return this;
 });
-function UserCtrl($scope, $http, initialization) {
+
+function StudyController($scope, $http, initialization){
+    $scope.sliderValue = 2;
     $scope.phoneText = [];
     $scope.phoneImages = [];
     $scope.imageText = {};
     $scope.revisedText = [];
-    
+    $scope.checkBox = {};
+    $scope.checkBox.yes = true;
+    $scope.sliderOptions = ['never', 'once or twice a term', 'once or twice a week','everyday'];
+    $scope.calculateValue = function(value) {
+        var finalValue = Math.round(value);
+        return finalValue;
+    };
     $scope.init = function() {
         initialization.getPhoneText.then(function(data){
             $scope.phoneText = data.data.split('\n');
@@ -70,4 +73,5 @@ function UserCtrl($scope, $http, initialization) {
         $scope.imageText[phone.name].selected = !$scope.imageText[phone.name].selected;
         document.getElementById(phone.name).style.background = color;
     }
-};
+
+}
