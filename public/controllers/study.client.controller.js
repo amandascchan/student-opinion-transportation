@@ -60,18 +60,13 @@ function StudyController($scope, $http, initialization){
         $scope.selectedItem = phone.name;
         _.forEach($scope.imageText, function(remainPhone) {
             if(remainPhone.name !== $scope.selectedItem && document.getElementById(remainPhone.name) !== null) {
-                document.getElementById(remainPhone.name).style.background = "#FFF3ED";
                 remainPhone.selected = false;
             }
         });
-        var color;
         if(phone.selected) {
-            color = "#FFF3ED";
             $scope.selectedItem = undefined;
         }
-        else color = "blue";
         $scope.imageText[phone.name].selected = !$scope.imageText[phone.name].selected;
-        document.getElementById(phone.name).style.background = color;
     }
 
 }

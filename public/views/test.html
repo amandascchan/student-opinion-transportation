@@ -12,12 +12,15 @@
 <script type="text/javascript" src="../../controllers/study.client.controller.js"> </script> 
 </head>
 <body>
-    <div class="header"> Student interest on using mobile devices to board GRT buses </div>
-         <p> The purpose of this questionaire is to gather general student interest in incorporating a mobile component to their GRT experiences. FED's is considering implementing a mobile application that will allow students with smartphones to board the GRT using their smartphones instead of their watcards. <i>This mobile app is meant as an ALTERNATIVE to using watcards, not a replacement.</i> </p>
-    
-<br/><br/><br/>
+    <div class="header"> Let's Go Mobile </div>
+    <p class="introTitle">Hey students, </p>
+         <p id="intro"> 
+         	FED's wants to give us one more way to ride the GRT. A mobile app for iOS and Android that will let us board GRT buses, much like our watcards do now, might be coming soon. Of course, using app will not tamper with personal data on your phone, and don't worry, watcards will still work just like they do now.</p>
 
-1. Which phone do you have?
+         	<p id="intro">Let us if you're interested, answer these questions below</p>
+
+<br/><br/><br/>
+<p class="question">1. Which phone do you have?</p>
 <div ng-init="init()">
 	<input type="search" id="textBox" ng-model="selectedItem " placeholder="Search...">
 	<div class="HorizontalScroll">
@@ -34,13 +37,11 @@
 		</ul>
 	</div>
 </div>
-2. Which term are you in? <!--lighter color-->eg. 3A <br/><br/>
+<p class="question">2. Which term are you in? <!--lighter color-->eg. 3A </p>
 <input id="textBox" type="text" ng-model="term" placeholder="">
-<br/>
-<br/>
-3. How often do you use the bus?
-<br/>
-<br/>
+
+<div class="question">3. How often do you use the bus?</div>
+
 <!--slider here-->
 <div class="noScroll">
 	<ul>
@@ -54,8 +55,7 @@
 	<slider id="restrictedWidth" floor="0" ceiling="3" step="0.01" precision="1" ng-model="sliderValue" translate="calculateValue"></slider>
 </div>
 
-4. Would you use a mobile app that lets you ride the GRT, like your watcard currently does? (Assuming a safe procedure, and that none of your data will be stolen)
-<!--checkbox--><br/>
+<p class="question">4. Would you use a safe mobile app that lets you ride the GRT, like your watcard does now?</p>
 <input type="radio" ng-model="checkBox.yes" name="checkBox">yes<br/>
 <input type="radio" ng-model="checkBox.no" name="checkBox">no
 <div ng-show="checkBox.no"> <br/>
